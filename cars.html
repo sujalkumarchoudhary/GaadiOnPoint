@@ -1,0 +1,198 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Our Cars | GaadiOnPoint</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <!-- Navigation -->
+    <nav>
+        <div class="logo">GaadiOnPoint</div>
+        <ul class="nav-links">
+            <li><a href="index.html">Home</a></li>
+            <li><a href="cars.html" class="active">Cars</a></li>
+            <li><a href="#contact">Contact</a></li>
+        </ul>
+        <div class="menu-toggle">☰</div>
+    </nav>
+
+    <!-- Cars Section -->
+    <section class="cars">
+        <h1>Our Cars</h1>
+        <div class="car-grid">
+            <!-- Car 1 -->
+            <div class="car-card">
+                <img src="img1.jpg" alt="Honda Civic">
+                <h3>Honda Civic</h3>
+                <p>Compact Sedan | $40/day | Seats 5</p>
+                <p>Fuel-efficient, Bluetooth, AC</p>
+                <button class="btn" onclick="openModal('hondacivic')">View Details</button>
+                <a href="tel:+917079787096" class="btn">Call to Book</a>
+            </div>
+            <!-- Car 2 -->
+            <div class="car-card">
+                <img src="img2.jpg" alt="Ford Explorer">
+                <h3>Ford Explorer</h3>
+                <p>SUV | $70/day | Seats 7</p>
+                <p>4WD, GPS, Spacious</p>
+                <button class="btn" onclick="openModal('fordexplorer')">View Details</button>
+                <a href="tel:+917079787096" class="btn">Call to Book</a>
+            </div>
+            <!-- Car 3 -->
+             <div class="car-card">
+                <img src="img3.jpg" alt="Toyota Camry">
+                <h3>Toyota Camry</h3>
+                <p>Sedan | $50/day | Seats 5</p>
+                <p>Comfortable, Reliable, AC</p>
+                <button class="btn" onclick="openModal('toyotacamry')">View Details</button>
+                <a href="tel:+917079787096" class="btn">Call to Book</a>
+             </div>
+            <!-- Car 4 -->
+             <div class="car-card">
+                <img src="img6.jpg" alt="Toyota Camry">
+                <h3>jeep Wrangler</h3>
+                <p>Sedan | $50/day | Seats 5</p>
+                <p>Comfortable, Reliable, AC</p>
+                <button class="btn" onclick="openModal('toyotacamry')">View Details</button>
+                <a href="tel:+917079787096" class="btn">Call to Book</a>
+             </div>
+             <!-- Car % -->
+             <div class="car-card">
+                <img src="img5.jpg" alt="Toyota Camry">
+                <h3>Jeep Wrangler</h3>
+                <p>Sedan | $50/day | Seats 5</p>
+                <p>Comfortable, Reliable, AC</p>
+                <button class="btn" onclick="openModal('toyotacamry')">View Details</button>
+                <a href="tel:+917079787096" class="btn">Call to Book</a>
+             </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contact" class="contact">
+        <h2>Contact Us</h2>
+        <p>Ready to rent? Call us at <a href="tel:+917079787096">(123) 456-7890</a></p>
+        <p>Email: info@[businessname].com</p>
+    </section>
+
+    <!-- Modal -->
+    <div id="carModal" class="modal">
+        <div class="modal-content">
+            <span class="close" onclick="closeModal()">&times;</span>
+            <h2 id="modal-model"></h2>
+            <div class="image-gallery">
+                <img src="" alt="Main Image" class="main-image">
+                <div class="thumbnail-row">
+                    <!-- Thumbnails will be populated by JavaScript -->
+                </div>
+            </div>
+            <div class="details">
+                <p><strong>Type:</strong> <span id="modal-type"></span></p>
+                <p><strong>Price:</strong> <span id="modal-price"></span></p>
+                <p><strong>Seats:</strong> <span id="modal-seats"></span></p>
+                <p><strong>Features:</strong> <span id="modal-features"></span></p>
+                <p><strong>Mileage:</strong> <span id="modal-mileage"></span> MPG</p>
+                <a href="tel:+917079787096" class="btn">Call to Book</a>
+            </div>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+    <script>
+        // Car data (same as in index.html)
+        const cars = {
+            hondacivic: {
+                model: "Honda Civic",
+                type: "Compact Sedan",
+                price: "$40/day",
+                seats: "5",
+                features: "Fuel-efficient, Bluetooth, AC",
+                mileage: "35",
+                images: [
+                    "img6.jpg",
+                    "img2.jpg",
+                    "img3.jpg",
+                    "img4.jpg"
+
+                ]
+            },
+            fordexplorer: {
+                model: "Ford Explorer",
+                type: "SUV",
+                price: "$70/day",
+                seats: "7",
+                features: "4WD, GPS, Spacious",
+                mileage: "22",
+                images: [
+                    "img1.jpg",
+                    "img2.jpg",
+                    "img3.jpg",
+                    "img4.jpg"
+                ]
+            },
+            toyotacamry: {
+                model: "Toyota Camry",
+                type: "Sedan",
+                price: "$50/day",
+                seats: "5",
+                features: "Comfortable, Reliable, AC",
+                mileage: "30",
+                images: [
+                    "img1.jpg",
+                    "img2.jpg",
+                    "img3.jpg",
+                    "img4.jpg"
+                ]
+            },
+            jeepwrangler: {
+                model: "Jeep Wrangler",
+                type: "SUV",
+                price: "$90/day",
+                seats: "5",
+                features: "Off-road, 4WD, Rugged",
+                mileage: "18",
+                images: [
+                    "img1.jpg",
+                    "img2.jpg",
+                    "img3.jpg",
+                    "img4.jpg"
+                ]
+            }
+        };
+
+        // Modal functions (same as in index.html)
+        function openModal(carId) {
+            const carData = cars[carId] || cars.hondacivic;
+            document.getElementById('modal-model').textContent = carData.model;
+            document.getElementById('modal-type').textContent = carData.type;
+            document.getElementById('modal-price').textContent = carData.price;
+            document.getElementById('modal-seats').textContent = carData.seats;
+            document.getElementById('modal-features').textContent = carData.features;
+            document.getElementById('modal-mileage').textContent = carData.mileage;
+            document.querySelector('.main-image').src = carData.images[0];
+            document.querySelector('.thumbnail-row').innerHTML = carData.images.map((img, index) => 
+                `<img src="${img}" alt="Image ${index + 1}" onclick="changeImage(this)">`
+            ).join('');
+            document.getElementById('carModal').style.display = 'block';
+        }
+
+        function closeModal() {
+            document.getElementById('carModal').style.display = 'none';
+        }
+
+        function changeImage(thumbnail) {
+            document.querySelector('.main-image').src = thumbnail.src;
+        }
+
+        // Close modal when clicking outside
+        window.onclick = function(event) {
+            const modal = document.getElementById('carModal');
+            if (event.target == modal) {
+                modal.style.display = 'none';
+            }
+        }
+    </script>
+</body>
+</html>
