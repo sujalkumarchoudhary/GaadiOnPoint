@@ -385,7 +385,9 @@ nav {
     .hero-car {
         max-width: 100%;
     }
-
+    .car-card .btn {
+        margin: 2px;
+    }
     .trending-grid,
     .car-grid {
         grid-template-columns: 1fr;
